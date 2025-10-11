@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase: AI-Powered Financial Analyst Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Calm Neutrals -->
+    <!-- Application Structure Plan: The SPA is structured into thematic, full-screen sections with a top navigation bar for easy access (Hero, Problem/Solution, Tech Stack, Architecture Explorer, Features, Conclusion). This structure was chosen over a linear document layout to create a more engaging, guided, and professional presentation. The highlight is the 'Architecture Explorer,' which turns a static text description into an interactive diagram. This allows users (recruiters, peers) to actively explore the project's technical depth at their own pace, making complex information more digestible and memorable. The user flow is from a high-level overview to deep technical details, controlled by the user. -->
+    <!-- Visualization & Content Choices: Report Info: Project Architecture -> Goal: Explain a complex, two-part process -> Viz/Presentation Method: Interactive diagram built with HTML/CSS/JS -> Interaction: Toggle buttons switch between the 'Knowledge Base Pipeline' and 'RAG Chatbot' workflows. Clickable nodes on the diagram reveal detailed explanations in a modal window. -> Justification: This transforms a static description into an engaging, self-paced learning experience, allowing users to drill down into details as needed, which is far more effective than reading paragraphs of text. -> Library/Method: Vanilla JS, Tailwind CSS. | Report Info: Tech Stack & Key Features -> Goal: Inform/Summarize -> Viz/Presentation Method: Grid of styled cards with icons -> Interaction: Subtle hover effects -> Justification: Enhances scannability and visual appeal compared to a simple bulleted list, making key information stand out. -> Library/Method: Tailwind CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        .diagram-node {
+            transition: all 0.3s ease;
+        }
+        .diagram-node:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0,0, 0.05);
+        }
+        .arrow {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: #94a3b8;
+        }
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: -5px;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid #94a3b8;
+        }
+        .arrow-down {
+             position: relative;
+             width: 2px;
+             height: 40px;
+             background-color: #94a3b8;
+             margin: 0 auto;
+        }
+        .arrow-down::after {
+             content: '';
+             position: absolute;
+             bottom: -1px;
+             left: -5px;
+             width: 0;
+             height: 0;
+             border-left: 6px solid transparent;
+             border-right: 6px solid transparent;
+             border-top: 10px solid #94a3b8;
+        }
+        .modal-content {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-slate-800">AI Financial Analyst</h1>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="#solution" class="text-slate-600 hover:text-indigo-600 font-medium">Solution</a>
+                    <a href="#stack" class="text-slate-600 hover:text-indigo-600 font-medium">Tech Stack</a>
+                    <a href="#architecture" class="text-slate-600 hover:text-indigo-600 font-medium">Architecture</a>
+                    <a href="#features" class="text-slate-600 hover:text-indigo-600 font-medium">Features</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="min-h-screen flex items-center bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                    AI-Powered Financial Analyst Chatbot
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-slate-600">
+                    An automated solution to instantly and accurately answer questions from complex financial reports using a Retrieval-Augmented Generation (RAG) architecture.
+                </p>
+                <a href="#solution" class="mt-10 inline-block bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-indigo-700 transition-transform transform hover:scale-105">
+                    Explore The Project
+                </a>
+            </div>
+        </section>
+
+        <section id="solution" class="py-20 sm:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 mb-8">
+                            <h3 class="text-3xl font-bold text-slate-900">The Challenge</h3>
+                            <p class="mt-4 text-lg text-slate-600">
+                                Financial analysis involves sifting through dense, lengthy quarterly reports. This manual process is slow and prone to error, making it difficult to extract precise data points quickly.
+                            </p>
+                        </div>
+                        <div class="bg-indigo-600 text-white p-8 rounded-xl shadow-lg">
+                            <h3 class="text-3xl font-bold">The Solution</h3>
+                            <p class="mt-4 text-lg opacity-90">
+                                An AI-powered chatbot built on a RAG architecture using n8n. It ingests financial reports, understands user queries, and provides accurate, source-based answers instantly.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8 md:mt-0">
+                        <img src="https://placehold.co/600x450/e2e8f0/334155?text=Chatbot+Interface+Screenshot" alt="Chatbot Interface in action" class="rounded-xl shadow-2xl border-4 border-white">
+                        <p class="text-center text-sm text-slate-500 mt-4">Replace with a screenshot of your chatbot interface.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stack" class="py-20 sm:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">Technology Stack</h2>
+                    <p class="mt-4 text-xl text-slate-600">Integrating a modern stack of AI and data technologies for a robust solution.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl">⚙️</div>
+                        <h4 class="mt-2 text-lg font-semibold text-slate-800">n8n.io</h4>
+                        <p class="text-slate-500">Automation Backbone</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl">📄</div>
+                        <h4 class="mt-2 text-lg font-semibold text-slate-800">Google Drive</h4>
+                        <p class="text-slate-500">Data Source</p>
+                    </div>
+                     <div class="flex flex-col items-center">
+                        <div class="text-4xl">🧠</div>
+                        <h4 class="mt-2 text-lg font-semibold text-slate-800">Google Gemini</h4>
+                        <p class="text-slate-500">Embeddings & LLM</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl">🌲</div>
+                        <h4 class="mt-2 text-lg font-semibold text-slate-800">Pinecone</h4>
+                        <p class="text-slate-500">Vector Database</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl">🤖</div>
+                        <h4 class="mt-2 text-lg font-semibold text-slate-800">AI Agent</h4>
+                        <p class="text-slate-500">Orchestration</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl">🧩</div>
+                        <h4 class="mt-2 text-lg font-semibold text-slate-800">RAG</h4>
+                        <p class="text-slate-500">Core Architecture</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="architecture" class="py-20 sm:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">Interactive Architecture Explorer</h2>
+                    <p class="mt-4 text-xl text-slate-600 max-w-4xl mx-auto">The project consists of two core workflows, shown below. Use the buttons to toggle between the diagrams, and click on any node to see a detailed explanation of its function.</p>
+                </div>
+                
+                <div class="my-12">
+                     <img src="https://placehold.co/1200x600/e2e8f0/334155?text=Full+n8n+Workflow+Screenshot" alt="Full n8n Workflow" class="rounded-xl shadow-2xl border-4 border-white mx-auto">
+                     <p class="text-center text-sm text-slate-500 mt-4">Replace with a screenshot of your full n8n canvas.</p>
+                </div>
+
+                <div class="mt-12 flex justify-center space-x-4">
+                    <button id="pipelineBtn" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold">Knowledge Base Pipeline</button>
+                    <button id="chatbotBtn" class="bg-white text-slate-700 px-6 py-2 rounded-lg font-semibold border border-slate-300">RAG Chatbot</button>
+                </div>
+
+                <div id="pipelineDiagram" class="mt-16">
+                    <div class="grid grid-cols-1 md:grid-cols-7 items-center gap-x-4 gap-y-4">
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node1">
+                            <p class="font-semibold">1. Fetch Documents</p><p class="text-sm text-slate-500">From Google Drive</p>
+                        </div>
+                        <div class="arrow hidden md:block"></div>
+                        <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node2">
+                            <p class="font-semibold">2. Download & Process</p><p class="text-sm text-slate-500">Extract & Chunk Text</p>
+                        </div>
+                         <div class="arrow hidden md:block"></div>
+                         <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node3">
+                           <p class="font-semibold">3. Generate Embeddings</p><p class="text-sm text-slate-500">Google Gemini</p>
+                        </div>
+                         <div class="arrow hidden md:block"></div>
+                         <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node4">
+                            <p class="font-semibold">4. Store in Pinecone</p><p class="text-sm text-slate-500">Upsert Vectors</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chatbotDiagram" class="mt-16 hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-9 items-center gap-x-4 gap-y-4">
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node5">
+                             <p class="font-semibold">1. Receive User Query</p><p class="text-sm text-slate-500">e.g., "Assets in Q4?"</p>
+                        </div>
+                         <div class="arrow hidden md:block"></div>
+                         <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node6">
+                             <p class="font-semibold">2. Embed Query</p><p class="text-sm text-slate-500">Google Gemini</p>
+                        </div>
+                         <div class="arrow hidden md:block"></div>
+                         <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node7">
+                            <p class="font-semibold">3. Query Pinecone</p><p class="text-sm text-slate-500">Similarity Search</p>
+                        </div>
+                         <div class="arrow hidden md:block"></div>
+                         <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node8">
+                            <p class="font-semibold">4. Augment Prompt</p><p class="text-sm text-slate-500">Query + Context</p>
+                        </div>
+                         <div class="arrow hidden md:block"></div>
+                         <div class="arrow-down md:hidden"></div>
+                        <div class="diagram-node bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer text-center" data-node="node9">
+                             <p class="font-semibold">5. Generate Answer</p><p class="text-sm text-slate-500">Google Gemini Chat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 sm:py-28 bg-white">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">Key Features & Benefits</h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-slate-800">✅ Accuracy</h4>
+                        <p class="mt-2 text-slate-600">Answers are based directly on source documents, minimizing inaccuracies.</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-slate-800">⏱️ Efficiency</h4>
+                        <p class="mt-2 text-slate-600">Reduces hours of manual research to mere seconds.</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-slate-800">📈 Scalability</h4>
+                        <p class="mt-2 text-slate-600">Easily scalable to handle thousands of documents.</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-slate-800">🛠️ Low-Code Implementation</h4>
+                        <p class="mt-2 text-slate-600">Demonstrates rapid development of complex AI systems with n8n.</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-slate-800">🧠 Context-Aware</h4>
+                        <p class="mt-2 text-slate-600">The RAG architecture ensures relevant, contextual answers.</p>
+                    </div>
+                     <div class="bg-slate-100 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-slate-800">🌐 Future-Ready</h4>
+                        <p class="mt-2 text-slate-600">Easily expandable with more data sources and a custom front-end.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="conclusion" class="py-20 sm:py-28">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                 <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">Conclusion & Future Work</h2>
+                 <p class="mt-6 text-xl text-slate-600">
+                    This project successfully demonstrates a practical, end-to-end implementation of a RAG-based AI assistant. It showcases how modern tools can be combined to solve real-world business problems efficiently. Future work could include adding more data sources, implementing more complex agentic logic, and creating a user-friendly web front-end.
+                 </p>
+                 <a href="https://www.linkedin.com/in/mohamed-ayman-nabawy-aaa577249/" target="_blank" rel="noopener noreferrer" class="mt-10 inline-block bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-indigo-700">
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-lg p-6">
+            <h3 id="modalTitle" class="text-2xl font-bold text-slate-900"></h3>
+            <p id="modalDescription" class="mt-4 text-slate-600"></p>
+            <button id="closeModal" class="mt-6 bg-slate-200 text-slate-800 px-4 py-2 rounded-lg font-semibold hover:bg-slate-300">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const architectureData = {
+                node1: {
+                    title: '1. Fetch Documents',
+                    description: "The workflow triggers and searches for specific files (e.g., Q1.pdf, Q2.pdf) in a designated Google Drive folder. This is the starting point for ingesting our knowledge base."
+                },
+                node2: {
+                    title: '2. Download & Process',
+                    description: "It downloads the files for processing. In a full implementation, this stage would also include text extraction (from PDF) and splitting the text into smaller, manageable chunks for effective embedding."
+                },
+                node3: {
+                    title: '3. Generate Embeddings',
+                    description: "Each text chunk is passed to a Google Gemini Embedding Model. This model converts the semantic meaning of the text into a numerical vector, which is a machine-readable representation of the content."
+                },
+                node4: {
+                    title: '4. Store in Pinecone',
+                    description: "These vectors, along with their corresponding original text as metadata, are stored (or 'upserted') into a Pinecone Vector Index. Pinecone is optimized for extremely fast similarity searches."
+                },
+                node5: {
+                    title: '1. Receive User Query',
+                    description: "The workflow activates when a user sends a message to the chatbot, for example: 'What were the total assets in Q4?'. The n8n AI Agent node manages the subsequent flow."
+                },
+                node6: {
+                    title: '2. Embed the Query',
+                    description: "The user's question is sent to the *same* Google Gemini Embedding Model used in the pipeline. This converts the question into a vector so it can be compared with the document vectors."
+                },
+                node7: {
+                    title: '3. Query Pinecone',
+                    description: "The question's vector is used to query the Pinecone index. Pinecone performs a similarity search and returns the top 'k' most relevant text chunks from the original financial reports."
+                },
+                node8: {
+                    title: '4. Augment the Prompt',
+                    description: "The original question and the relevant text chunks retrieved from Pinecone (the 'context') are combined into a single, comprehensive prompt for the language model."
+                },
+                node9: {
+                    title: '5. Generate Answer',
+                    description: "This augmented prompt is sent to a powerful Google Gemini Chat Model. The model is instructed to formulate an answer based *only* on the provided context, preventing hallucination and ensuring accuracy."
+                }
+            };
+
+            const pipelineBtn = document.getElementById('pipelineBtn');
+            const chatbotBtn = document.getElementById('chatbotBtn');
+            const pipelineDiagram = document.getElementById('pipelineDiagram');
+            const chatbotDiagram = document.getElementById('chatbotDiagram');
+
+            pipelineBtn.addEventListener('click', () => {
+                pipelineDiagram.classList.remove('hidden');
+                chatbotDiagram.classList.add('hidden');
+                pipelineBtn.classList.add('bg-indigo-600', 'text-white');
+                pipelineBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+                chatbotBtn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+                chatbotBtn.classList.remove('bg-indigo-600', 'text-white');
+            });
+
+            chatbotBtn.addEventListener('click', () => {
+                chatbotDiagram.classList.remove('hidden');
+                pipelineDiagram.classList.add('hidden');
+                chatbotBtn.classList.add('bg-indigo-600', 'text-white');
+                chatbotBtn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+                pipelineBtn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-300');
+                pipelineBtn.classList.remove('bg-indigo-600', 'text-white');
+            });
+
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const closeModal = document.getElementById('closeModal');
+
+            document.querySelectorAll('.diagram-node').forEach(node => {
+                node.addEventListener('click', () => {
+                    const nodeId = node.dataset.node;
+                    const data = architectureData[nodeId];
+                    if (data) {
+                        modalTitle.textContent = data.title;
+                        modalDescription.textContent = data.description;
+                        modal.classList.remove('hidden');
+                    }
+                });
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+            
+            document.querySelectorAll('header a, a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
