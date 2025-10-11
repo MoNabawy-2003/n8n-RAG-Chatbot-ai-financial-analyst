@@ -6,8 +6,8 @@
     <title>Project Showcase: AI-Powered Financial Analyst Chatbot</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chosen Palette: Calm Neutrals -->
-    <!-- Application Structure Plan: The SPA is structured into thematic, full-screen sections with a top navigation bar for easy access (Hero, Problem/Solution, Tech Stack, Architecture Explorer, Features, Conclusion). This structure was chosen over a linear document layout to create a more engaging, guided, and professional presentation. The highlight is the 'Architecture Explorer,' which turns a static text description into an interactive diagram. This allows users (recruiters, peers) to actively explore the project's technical depth at their own pace, making complex information more digestible and memorable. The user flow is from a high-level overview to deep technical details, controlled by the user. -->
-    <!-- Visualization & Content Choices: Report Info: Project Architecture -> Goal: Explain a complex, two-part process -> Viz/Presentation Method: Interactive diagram built with HTML/CSS/JS -> Interaction: Toggle buttons switch between the 'Knowledge Base Pipeline' and 'RAG Chatbot' workflows. Clickable nodes on the diagram reveal detailed explanations in a modal window. -> Justification: This transforms a static description into an engaging, self-paced learning experience, allowing users to drill down into details as needed, which is far more effective than reading paragraphs of text. -> Library/Method: Vanilla JS, Tailwind CSS. | Report Info: Tech Stack & Key Features -> Goal: Inform/Summarize -> Viz/Presentation Method: Grid of styled cards with icons -> Interaction: Subtle hover effects -> Justification: Enhances scability and visual appeal compared to a simple bulleted list, making key information stand out. -> Library/Method: Tailwind CSS. -->
+    <!-- Application Structure Plan: The SPA is structured into thematic, full-screen sections with a top navigation bar for easy access (Hero, Problem/Solution, Vector DB, Tech Stack, Architecture Explorer, Features, Conclusion). This structure was chosen over a linear document layout to create a more engaging, guided, and professional presentation. A new dedicated section for the Vector Database explains its core importance. The highlight remains the 'Architecture Explorer,' which turns a static text description into an interactive diagram. This allows users (recruiters, peers) to actively explore the project's technical depth at their own pace, making complex information more digestible and memorable. The user flow is from a high-level overview to deep technical details, controlled by the user. -->
+    <!-- Visualization & Content Choices: Report Info: Vector DB concept -> Goal: Explain a core technical concept simply -> Viz/Presentation Method: Two-column layout with simple diagrams made with styled HTML/CSS. -> Interaction: None, purely illustrative. -> Justification: Visually breaks down the abstract concept of embeddings and semantic search for a non-expert audience. | Report Info: Project Architecture -> Goal: Explain a complex, two-part process -> Viz/Presentation Method: Interactive diagram built with HTML/CSS/JS -> Interaction: Toggle buttons switch between the 'Knowledge Base Pipeline' and 'RAG Chatbot' workflows. Clickable nodes on the diagram reveal detailed explanations in a modal window. -> Justification: This transforms a static description into an engaging, self-paced learning experience, allowing users to drill down into details as needed. -> Library/Method: Vanilla JS, Tailwind CSS. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -64,6 +64,17 @@
             from { transform: translateY(30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        .vector-viz-box {
+            font-family: monospace;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-700">
@@ -76,7 +87,7 @@
                 </div>
                 <nav class="hidden md:flex md:space-x-8">
                     <a href="#solution" class="text-slate-600 hover:text-indigo-600 font-medium">Solution</a>
-                    <a href="#stack" class="text-slate-600 hover:text-indigo-600 font-medium">Tech Stack</a>
+                    <a href="#vector-db" class="text-slate-600 hover:text-indigo-600 font-medium">Vector DB</a>
                     <a href="#architecture" class="text-slate-600 hover:text-indigo-600 font-medium">Architecture</a>
                     <a href="#features" class="text-slate-600 hover:text-indigo-600 font-medium">Features</a>
                 </nav>
@@ -106,13 +117,13 @@
                         <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 mb-8">
                             <h3 class="text-3xl font-bold text-slate-900">The Challenge</h3>
                             <p class="mt-4 text-lg text-slate-600">
-                                Financial analysis involves sifting through dense, lengthy quarterly reports. This manual process is slow and prone to error, making it difficult to extract precise data points quickly.
+                                Financial analysis involves sifting through dense, lengthy quarterly reports. This manual process is slow and prone to error, making it difficult to extract precise data points quickly. Traditional keyword search often fails to capture the semantic nuance of financial language.
                             </p>
                         </div>
                         <div class="bg-indigo-600 text-white p-8 rounded-xl shadow-lg">
                             <h3 class="text-3xl font-bold">The Solution</h3>
                             <p class="mt-4 text-lg opacity-90">
-                                An AI-powered chatbot built on a RAG architecture using n8n. It ingests financial reports, understands user queries, and provides accurate, source-based answers instantly.
+                                An AI-powered chatbot built on a RAG architecture using n8n. It ingests financial reports to build a "semantic memory", understands complex user queries, and provides accurate, source-based answers instantly. It finds answers based on meaning, not just keywords.
                             </p>
                         </div>
                     </div>
@@ -124,52 +135,42 @@
             </div>
         </section>
 
-        <section id="stack" class="py-20 sm:py-28 bg-white">
+        <section id="vector-db" class="py-20 sm:py-28 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">Technology Stack</h2>
-                    <p class="mt-4 text-xl text-slate-600">Integrating a modern stack of AI and data technologies for a robust solution.</p>
+                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">The Core Component: The Vector Database</h2>
+                    <p class="mt-4 text-xl text-slate-600 max-w-4xl mx-auto">This project moves beyond simple keyword matching. The "brain" of the operation is the Pinecone vector database, which enables true semantic understanding.</p>
                 </div>
-                <div class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-                    <div class="flex flex-col items-center">
-                        <div class="text-4xl">⚙️</div>
-                        <h4 class="mt-2 text-lg font-semibold text-slate-800">n8n.io</h4>
-                        <p class="text-slate-500">Automation Backbone</p>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-slate-800">1. From Words to Meaning (Embeddings)</h3>
+                        <p class="mt-3 text-slate-600">First, the Google Gemini model reads chunks of text from the financial reports and converts them into numerical representations called 'vectors'. This vector is a mathematical fingerprint of the text's meaning.</p>
+                        <div class="mt-4 bg-slate-50 p-4 rounded-lg border">
+                            <p class="text-slate-800 font-medium">"Total assets were $50.5 billion..."</p>
+                            <div class="text-2xl text-center my-2 text-slate-400">↓</div>
+                            <p class="vector-viz-box">[0.02, -0.15, 0.98, ... , -0.43]</p>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <div class="text-4xl">📄</div>
-                        <h4 class="mt-2 text-lg font-semibold text-slate-800">Google Drive</h4>
-                        <p class="text-slate-500">Data Source</p>
-                    </div>
-                     <div class="flex flex-col items-center">
-                        <div class="text-4xl">🧠</div>
-                        <h4 class="mt-2 text-lg font-semibold text-slate-800">Google Gemini</h4>
-                        <p class="text-slate-500">Embeddings & LLM</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="text-4xl">🌲</div>
-                        <h4 class="mt-2 text-lg font-semibold text-slate-800">Pinecone</h4>
-                        <p class="text-slate-500">Vector Database</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="text-4xl">🤖</div>
-                        <h4 class="mt-2 text-lg font-semibold text-slate-800">AI Agent</h4>
-                        <p class="text-slate-500">Orchestration</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="text-4xl">🧩</div>
-                        <h4 class="mt-2 text-lg font-semibold text-slate-800">RAG</h4>
-                        <p class="text-slate-500">Core Architecture</p>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-slate-800">2. Finding the Closest Idea (Semantic Search)</h3>
+                        <p class="mt-3 text-slate-600">When you ask a question, it's also converted into a vector. Pinecone then instantly searches its entire database of document vectors to find the ones that are mathematically closest in meaning to your question's vector.</p>
+                        <div class="mt-4 bg-slate-50 p-4 rounded-lg border">
+                             <p class="text-indigo-600 font-medium">Your question: "What are the company's assets?"</p>
+                             <div class="text-2xl text-center my-2 text-slate-400">↓</div>
+                             <p class="font-medium text-slate-800">Pinecone Finds:</p>
+                             <p class="vector-viz-box">"Total assets were $50.5 billion..."</p>
+                        </div>
                     </div>
                 </div>
+                 <p class="mt-12 text-center text-lg text-slate-600 bg-indigo-50 border border-indigo-200 p-6 rounded-lg">This is why the chatbot is so powerful: it retrieves information based on conceptual similarity, not just keyword overlap, ensuring highly relevant and accurate context for generating answers.</p>
             </div>
         </section>
-        
+
         <section id="architecture" class="py-20 sm:py-28">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h2 class="text-3xl font-bold text-slate-900 tracking-tight sm:text-4xl">Interactive Architecture Explorer</h2>
-                    <p class="mt-4 text-xl text-slate-600 max-w-4xl mx-auto">The project consists of two core workflows, shown below. Use the buttons to toggle between the diagrams, and click on any node to see a detailed explanation of its function.</p>
+                    <p class="mt-4 text-xl text-slate-600 max-w-4xl mx-auto">The project's engine is composed of two distinct but connected automated workflows. Use the buttons below to explore each one, and click any step to see its detailed function.</p>
                 </div>
                 
                 <div class="my-12">
@@ -242,28 +243,28 @@
                 </div>
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-slate-100 p-6 rounded-lg">
-                        <h4 class="text-lg font-semibold text-slate-800">✅ Accuracy</h4>
-                        <p class="mt-2 text-slate-600">Answers are based directly on source documents, minimizing inaccuracies.</p>
+                        <h4 class="text-lg font-semibold text-slate-800">✅ Unwavering Accuracy</h4>
+                        <p class="mt-2 text-slate-600">Answers are based directly on source documents, minimizing inaccuracies and preventing hallucination.</p>
                     </div>
                     <div class="bg-slate-100 p-6 rounded-lg">
-                        <h4 class="text-lg font-semibold text-slate-800">⏱️ Efficiency</h4>
-                        <p class="mt-2 text-slate-600">Reduces hours of manual research to mere seconds.</p>
+                        <h4 class="text-lg font-semibold text-slate-800">⏱️ Blazing-Fast Efficiency</h4>
+                        <p class="mt-2 text-slate-600">Reduces hours of manual research and data extraction to mere seconds.</p>
                     </div>
                     <div class="bg-slate-100 p-6 rounded-lg">
-                        <h4 class="text-lg font-semibold text-slate-800">📈 Scalability</h4>
-                        <p class="mt-2 text-slate-600">Easily scalable to handle thousands of documents.</p>
+                        <h4 class="text-lg font-semibold text-slate-800">📈 Massively Scalable</h4>
+                        <p class="mt-2 text-slate-600">The architecture is designed to handle thousands of documents without a drop in performance.</p>
                     </div>
                     <div class="bg-slate-100 p-6 rounded-lg">
-                        <h4 class="text-lg font-semibold text-slate-800">🛠️ Low-Code Implementation</h4>
-                        <p class="mt-2 text-slate-600">Demonstrates rapid development of complex AI systems with n8n.</p>
+                        <h4 class="text-lg font-semibold text-slate-800">🛠️ Rapid Low-Code Build</h4>
+                        <p class="mt-2 text-slate-600">Demonstrates the power of n8n for rapidly developing and deploying complex AI systems.</p>
                     </div>
                     <div class="bg-slate-100 p-6 rounded-lg">
-                        <h4 class="text-lg font-semibold text-slate-800">🧠 Context-Aware</h4>
-                        <p class="mt-2 text-slate-600">The RAG architecture ensures relevant, contextual answers.</p>
+                        <h4 class="text-lg font-semibold text-slate-800">🧠 True Contextual Understanding</h4>
+                        <p class="mt-2 text-slate-600">The RAG architecture ensures relevant, context-aware answers, not just keyword matches.</p>
                     </div>
                      <div class="bg-slate-100 p-6 rounded-lg">
-                        <h4 class="text-lg font-semibold text-slate-800">🌐 Future-Ready</h4>
-                        <p class="mt-2 text-slate-600">Easily expandable with more data sources and a custom front-end.</p>
+                        <h4 class="text-lg font-semibold text-slate-800">🌐 Future-Ready & Expandable</h4>
+                        <p class="mt-2 text-slate-600">Easily expandable with more data sources, agentic logic, and custom front-ends.</p>
                     </div>
                 </div>
             </div>
@@ -393,5 +394,4 @@
     </script>
 </body>
 </html>
-
 
